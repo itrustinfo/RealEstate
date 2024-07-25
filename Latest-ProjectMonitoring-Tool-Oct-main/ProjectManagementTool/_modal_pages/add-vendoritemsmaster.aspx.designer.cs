@@ -121,6 +121,24 @@ namespace ProjectManagementTool._modal_pages {
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
+        /// txtValidFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtValidFrom;
+        
+        /// <summary>
+        /// txtValidUntil control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtValidUntil;
+        
+        /// <summary>
         /// DDLUnit control.
         /// </summary>
         /// <remarks>
@@ -148,22 +166,31 @@ namespace ProjectManagementTool._modal_pages {
         protected global::System.Web.UI.WebControls.TextBox txtRate;
         
         /// <summary>
-        /// txtValidFrom control.
+        /// txtCGST control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtValidFrom;
+        protected global::System.Web.UI.WebControls.TextBox txtCGST;
         
         /// <summary>
-        /// txtValidUntil control.
+        /// txtSGST control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtValidUntil;
+        protected global::System.Web.UI.WebControls.TextBox txtSGST;
+        
+        /// <summary>
+        /// txtGST control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtGST;
         
         /// <summary>
         /// txtVSPname control.

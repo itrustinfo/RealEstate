@@ -259,11 +259,14 @@ namespace ProjectManagementTool._content_pages.dashboard_new
                     {
                         LoadFinancialGraph();
                     }
-                    // BindCamera(DDLWorkPackage.SelectedValue);
+                     BindCamera(DDLWorkPackage.SelectedValue);
                     //
                     LoadItemsGraph();
                     Bind_ResourceGraph(DDLWorkPackage.SelectedValue);
                     Bind_DocumentsChart6();
+                    //
+                    Bind_StockChart_ForRealEstate();
+                    //
                     heading.InnerHtml = "Physical Progress Chart - " + DDlProject.SelectedItem.Text + " (" + DDLWorkPackage.SelectedItem.Text + ")";
                     headingF.InnerHtml = "Financial Progress Chart - " + DDlProject.SelectedItem.Text + " (" + DDLWorkPackage.SelectedItem.Text + ")";
 
@@ -1067,7 +1070,7 @@ namespace ProjectManagementTool._content_pages.dashboard_new
             {
                 divProgresschart.Visible = false;
                 divFinProgressChart.Visible = false;
-               
+                divItemGraph.Visible = true;
                 divdashboardimage.Visible = true;
                 
             }
@@ -1078,6 +1081,7 @@ namespace ProjectManagementTool._content_pages.dashboard_new
                
                 divdashboardimage.Visible = true;
                 divMainblocks.Visible = true;
+                divItemGraph.Visible = false;
                 LoadGraph();
             }
             else if (rdSelect.SelectedIndex == 2)
@@ -1087,6 +1091,7 @@ namespace ProjectManagementTool._content_pages.dashboard_new
             
                 divdashboardimage.Visible = true;
                 divMainblocks.Visible = true;
+                divItemGraph.Visible = false;
                 LoadFinancialGraph();
             }
            
@@ -1745,6 +1750,158 @@ namespace ProjectManagementTool._content_pages.dashboard_new
                 ltScript_ItemStocks.Text = strScript.ToString();
 
             }
+        }
+
+        //
+        private void Bind_StockChart_ForRealEstate()
+        {
+            if (DDLWorkPackage.SelectedValue != "--Select--")
+            {
+                //Guid FlowUID = new Guid("95AF4084-3F07-4184-8E3F-1CA3A916EE59");
+                //DataSet ds = getdt.getDocumentCount_by_ProjectUID_WorkPackageUID_Flow(new Guid(DDlProject.SelectedValue), new Guid(DDLWorkPackage.SelectedValue), FlowUID);
+                //if (ds.Tables[0].Rows.Count > 0)
+                //{
+                    StringBuilder strScript = new StringBuilder();
+
+                    // Define JavaScript variables for the counts and delays
+                    strScript.AppendLine("<script type='text/javascript'>");
+                    strScript.AppendLine("google.charts.load('current', { packages: ['corechart', 'bar'] });");
+                    strScript.AppendLine("google.charts.setOnLoadCallback(drawBasic);");
+
+                    // Generate JavaScript code to set variables from dataset values
+                    strScript.AppendLine("function drawBasic() {");
+                    strScript.AppendLine("var data = google.visualization.arrayToDataTable([");
+
+                    // Define the headers for the data
+                    strScript.AppendLine("['', 'Ordered Qty', 'Stock','Used'],");
+
+                    // Loop through the dataset and add data rows
+                    //foreach (DataRow row in ds.Tables[0].Rows)
+                    //{
+                    //    string documentName = row[0].ToString();
+                    //    int count = Convert.ToInt32(row[1]);
+                    //    int delay = Convert.ToInt32(row[2]);
+
+                    //    // Add a data row for each document
+                    //    strScript.AppendLine("['" + documentName + "', " + count + ", " + delay + ",'#57c7d4', '#f96868', '', ''],");
+
+                    //}
+
+                strScript.AppendLine("['Cement', 10000, 3000,7000],");
+                strScript.AppendLine("['Steel', 5000, 2000,1000],");
+                strScript.AppendLine("['Electrical components', 1000, 200,800],");
+                strScript.AppendLine("['Concrete Bricks', 10000, 3000,7000],");
+                strScript.AppendLine("['Tiles', 5000, 2000,3000],");
+
+                // Remove the trailing comma from the last row
+                strScript.Length -= 3;
+
+                    strScript.AppendLine("]);");
+                
+                // Rest of your JavaScript code
+                strScript.Append("var options = {");
+                strScript.Append("is3D: true,");
+                strScript.Append("legend: { position: 'top' },");
+                strScript.Append("colors: ['blue', '#f96868','green'],");
+                strScript.Append("fontSize: 11,");
+                strScript.Append("bars: 'horizontal',");
+                strScript.Append("bar: { groupWidth: '100% ' },");
+                strScript.Append("annotations: {");
+                strScript.Append("alwaysOutside: true,");
+                strScript.Append("textStyle: {");
+                strScript.Append("fontSize: 12,");
+                strScript.Append("color: 'black'");
+                strScript.Append("}");
+                strScript.Append("},");
+                strScript.Append("axes: {");
+                strScript.Append("x: {");
+                strScript.Append("0: { side: 'top' }");
+                strScript.Append("}");
+                strScript.Append("},");
+                strScript.Append("hAxis: {");
+                strScript.Append("minValue: 0");
+                strScript.Append("}");
+                strScript.Append("};");
+
+                //Add count and delay to the 'annotation' columns with respective colors
+                //strScript.AppendLine("for (var i = 0; i < data.getNumberOfRows(); i++) {");
+                //strScript.AppendLine("    var count = data.getValue(i, 1);");
+                //strScript.AppendLine("    var delay = data.getValue(i, 2);");
+                //strScript.AppendLine("    data.setValue(i, 3, count.toString());");
+                //strScript.AppendLine("    data.setValue(i, 4, delay.toString());");
+                //strScript.AppendLine("    data.setValue(i, 5, count.toString());");
+                //strScript.AppendLine("    data.setValue(i, 6, delay.toString());");
+                //strScript.AppendLine("    data.setFormattedValue(i, 3, count.toString());");
+                //strScript.AppendLine("    data.setFormattedValue(i, 4, delay.toString());");
+                //strScript.AppendLine("    data.setFormattedValue(i, 5, count.toString());");
+                //strScript.AppendLine("    data.setFormattedValue(i, 6, delay.toString());");
+                //strScript.AppendLine("    data.setProperty(i, 3, 'style', 'color: #000080; font-weight: bold;');");
+                //strScript.AppendLine("    data.setProperty(i, 4, 'style', 'color:#800000; font-weight: bold;');");
+                //strScript.AppendLine("    data.setProperty(i, 5, 'style', 'color:#000080; font-weight: bold;');");
+                //strScript.AppendLine("    data.setProperty(i, 6, 'style', 'color: #800000; font-weight: bold;');");
+                //strScript.AppendLine("}");
+
+
+                //strScript.AppendLine("function selectHandler() {");
+                //    strScript.AppendLine("    var selection = chart.getSelection();");
+                //    strScript.AppendLine("    if (selection.length > 0) {");
+                //    strScript.AppendLine("        colLabel = data.getColumnLabel(selection[0].column);");
+                //    strScript.AppendLine("        mydata = data.getValue(selection[0].row, 0);");
+                //    strScript.AppendLine("        if (colLabel === 'Count') {");
+                //    strScript.AppendLine("            window.location.href = '/_content_pages/document-chart-drilldown/default.aspx?" +
+                //    "ProjectUId=" + DDlProject.SelectedValue +
+                //    "&WorkPackageUID=" + DDLWorkPackage.SelectedValue +
+                //    "&FlowUID=" +
+                //    "&colLabel=' + colLabel + " +  // Concatenate JavaScript variable
+                //    "'&mydata=' + mydata;"); // Concatenate JavaScript variable
+                //    //strScript.AppendLine("        } else if (colLabel === 'Delayed') {");
+                //    //strScript.AppendLine("            window.location.href = '/_content_pages/dashboard/default.aspx';");
+                //    strScript.AppendLine("        }");
+                //    strScript.AppendLine("    }");
+                //    strScript.AppendLine("}");
+
+
+                //// Rest of your JavaScript code
+                //strScript.AppendLine("var chart = new google.visualization.BarChart(document.getElementById('StockChart_Div'));");
+                //strScript.AppendLine("google.visualization.events.addListener(chart, 'select', selectHandler);");
+                //strScript.AppendLine("chart.draw(data, options);");
+
+                strScript.AppendLine("var chart = new google.charts.Bar(document.getElementById('StockChart_Div'));");
+                strScript.AppendLine("chart.draw(data, google.charts.Bar.convertOptions(options));");
+                strScript.AppendLine("};");
+                strScript.AppendLine("</script>");
+
+                
+
+                ltScript_Stock.Text = strScript.ToString();
+                }
+                else
+                {
+                ltScript_Stock.Text = "<h4>No data</h4>";
+                }
+
+                
+
+           // }
+        }
+
+        private void BindCamera(string WorkpackageUID)
+        {
+           
+            DataSet ds = getdt.Camera_Selectby_WorkpackageUID_Dashboard(new Guid(WorkpackageUID));
+            string list = string.Empty;
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    list += "<div><a href='" + dr["Camera_IPAddress"].ToString() + "' target=\"_blank\">" + dr["Camera_Name"].ToString() + "</a></div><br/>";
+                }
+            }
+            else
+            {
+                list = "<div>No Camera added</div>";
+            }
+            divCameralist.InnerHtml = list;
         }
     }
 }

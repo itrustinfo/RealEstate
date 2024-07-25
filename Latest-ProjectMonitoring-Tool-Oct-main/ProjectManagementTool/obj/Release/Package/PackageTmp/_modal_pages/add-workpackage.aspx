@@ -233,11 +233,9 @@ function toUSD(objctrl) {
                     </div>
                     <div class="form-group">    
                         <label class="lblCss" for="TxtRemarks">Assign to User</label> &nbsp;<span style="color:red; font-size:1rem;">*</span>
-
-                      
-                       <asp:ListBox ID="lstUsers" runat="server" CssClass="form-control" SelectionMode="Multiple">
-
-                       </asp:ListBox>  
+                      <asp:CheckBoxList runat="server" CssClass="form-control chkChoice" ID="chkWrkPckgUsers" RepeatColumns="3" Visible="true" RepeatLayout="Table" RepeatDirection="Horizontal" Height="100%"></asp:CheckBoxList>
+                       <%--    <asp:ListBox ID="lstUsers" runat="server" CssClass="form-control" SelectionMode="Multiple">
+                    </asp:ListBox> --%> 
                     </div>
                 </div>
                 <div class="col-sm-6">

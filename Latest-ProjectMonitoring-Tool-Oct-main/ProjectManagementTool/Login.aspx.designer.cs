@@ -13,15 +13,6 @@ namespace ProjectManagementTool {
     public partial class Login {
         
         /// <summary>
-        /// VEPL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl VEPL;
-        
-        /// <summary>
         /// sLogo control.
         /// </summary>
         /// <remarks>
@@ -47,15 +38,6 @@ namespace ProjectManagementTool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblDescription;
-        
-        /// <summary>
-        /// Div1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
         
         /// <summary>
         /// form2 control.

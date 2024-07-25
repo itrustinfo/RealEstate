@@ -39,7 +39,7 @@
                                                          <asp:BoundField DataField="UnitforProgress" HeaderText="Unit for Progress">
                                                             <HeaderStyle HorizontalAlign="Left" />
                                                             </asp:BoundField>
-                                                            <asp:BoundField DataField="Quantity" HeaderText="Quantity" >
+                                                            <asp:BoundField DataField="Quantity" HeaderText="Contractor Quantity" >
                                                             <HeaderStyle HorizontalAlign="Left" />
                                                             </asp:BoundField>
                                                             <asp:BoundField DataField="Remarks" HeaderText="Remarks">
@@ -62,7 +62,7 @@
                                                             <a id="EditMeasurement" href="/_modal_pages/edit-measurement.aspx?UID=<%#Eval("UID")%>" class="showEditMeasurementModel"><span title="Edit" class="fas fa-edit"></span></a> 
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                        <asp:TemplateField>   
+                                                        <asp:TemplateField ItemStyle-CssClass="hide" HeaderStyle-CssClass="hide">   
                                                             <ItemTemplate>
                                                                    <asp:LinkButton ID="lnkdelete" runat="server" CausesValidation="false" OnClientClick="return DeleteItem()" CommandArgument='<%#Eval("UID")%>' CommandName="delete"><span title="Delete" class="fas fa-trash"></span></asp:LinkButton>
                                                              </ItemTemplate>

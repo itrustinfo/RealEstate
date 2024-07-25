@@ -67,31 +67,31 @@ namespace ProjectManagementTool._content_pages.purchase_order {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// LblAllInvoiceTotalVendor control.
+        /// LblGrossWorkPackage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblAllInvoiceTotalVendor;
+        protected global::System.Web.UI.WebControls.Label LblGrossWorkPackage;
         
         /// <summary>
-        /// LblAllInvoiceDeductionTotalVendor control.
+        /// LblTaxWorkPackage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblAllInvoiceDeductionTotalVendor;
+        protected global::System.Web.UI.WebControls.Label LblTaxWorkPackage;
         
         /// <summary>
-        /// LblAllInvoiceNetTotalVednor control.
+        /// LblNetWorkPackage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblAllInvoiceNetTotalVednor;
+        protected global::System.Web.UI.WebControls.Label LblNetWorkPackage;
         
         /// <summary>
         /// GrdVendors control.
@@ -130,22 +130,22 @@ namespace ProjectManagementTool._content_pages.purchase_order {
         protected global::System.Web.UI.WebControls.Button btnback;
         
         /// <summary>
-        /// AddInvoice control.
+        /// AddPO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor AddInvoice;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor AddPO;
         
         /// <summary>
-        /// Button2 control.
+        /// btnaddpo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btnaddpo;
         
         /// <summary>
         /// lblVendorID control.
@@ -184,31 +184,31 @@ namespace ProjectManagementTool._content_pages.purchase_order {
         protected global::System.Web.UI.WebControls.Label lblVednorAddr;
         
         /// <summary>
-        /// LblAllInvoiceTotal control.
+        /// LblVendorGrossAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblAllInvoiceTotal;
+        protected global::System.Web.UI.WebControls.Label LblVendorGrossAmount;
         
         /// <summary>
-        /// LblAllInvoiceDeductionTotal control.
+        /// LblVendorTaxAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblAllInvoiceDeductionTotal;
+        protected global::System.Web.UI.WebControls.Label LblVendorTaxAmount;
         
         /// <summary>
-        /// LblAllInvoiceNetTotal control.
+        /// LblVendorNetAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblAllInvoiceNetTotal;
+        protected global::System.Web.UI.WebControls.Label LblVendorNetAmount;
         
         /// <summary>
         /// GrdInvoice control.
@@ -220,13 +220,13 @@ namespace ProjectManagementTool._content_pages.purchase_order {
         protected global::System.Web.UI.WebControls.GridView GrdInvoice;
         
         /// <summary>
-        /// InvoiceDetails control.
+        /// PoDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl InvoiceDetails;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PoDetails;
         
         /// <summary>
         /// btnPrint control.
@@ -238,49 +238,49 @@ namespace ProjectManagementTool._content_pages.purchase_order {
         protected global::System.Web.UI.WebControls.Button btnPrint;
         
         /// <summary>
-        /// LblInvoiceNumber control.
+        /// LblPONumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblInvoiceNumber;
+        protected global::System.Web.UI.WebControls.Label LblPONumber;
         
         /// <summary>
-        /// LblInvoiceDate control.
+        /// LblPODate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblInvoiceDate;
+        protected global::System.Web.UI.WebControls.Label LblPODate;
         
         /// <summary>
-        /// LblInvoiceTotalAmount control.
+        /// LblPOTotalAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblInvoiceTotalAmount;
+        protected global::System.Web.UI.WebControls.Label LblPOTotalAmount;
         
         /// <summary>
-        /// LblInvoiceDeductionAmount control.
+        /// LblPOTaxAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblInvoiceDeductionAmount;
+        protected global::System.Web.UI.WebControls.Label LblPOTaxAmount;
         
         /// <summary>
-        /// LblNetAmount control.
+        /// LblPONetAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNetAmount;
+        protected global::System.Web.UI.WebControls.Label LblPONetAmount;
         
         /// <summary>
         /// LblUptoPrevTotal control.
@@ -310,13 +310,13 @@ namespace ProjectManagementTool._content_pages.purchase_order {
         protected global::System.Web.UI.WebControls.Label LblUptoPrevNetTotal;
         
         /// <summary>
-        /// RABillsDiv control.
+        /// PoItemsDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl RABillsDiv;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PoItemsDiv;
         
         /// <summary>
         /// btnRABillPrint control.
@@ -328,22 +328,22 @@ namespace ProjectManagementTool._content_pages.purchase_order {
         protected global::System.Web.UI.WebControls.Button btnRABillPrint;
         
         /// <summary>
-        /// AddRAbill control.
+        /// AddPoItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor AddRAbill;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor AddPoItem;
         
         /// <summary>
-        /// btnAddRABill control.
+        /// btnAddPoItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddRABill;
+        protected global::System.Web.UI.WebControls.Button btnAddPoItem;
         
         /// <summary>
         /// GrdRABillItems control.
@@ -355,13 +355,13 @@ namespace ProjectManagementTool._content_pages.purchase_order {
         protected global::System.Web.UI.WebControls.GridView GrdRABillItems;
         
         /// <summary>
-        /// Taxes control.
+        /// PoTaxes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Taxes;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PoTaxes;
         
         /// <summary>
         /// AddInvoiceDeductions control.

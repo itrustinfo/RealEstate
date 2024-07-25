@@ -130,6 +130,15 @@ namespace ProjectManager._master_pages {
         protected global::System.Web.UI.WebControls.HyperLink Invoice;
         
         /// <summary>
+        /// InvoiceIncm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink InvoiceIncm;
+        
+        /// <summary>
         /// EngineeringFast control.
         /// </summary>
         /// <remarks>
@@ -137,15 +146,6 @@ namespace ProjectManager._master_pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink EngineeringFast;
-        
-        /// <summary>
-        /// HyperLink18 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink18;
         
         /// <summary>
         /// ProjectTracking control.
@@ -526,6 +526,51 @@ namespace ProjectManager._master_pages {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink21;
         
         /// <summary>
+        /// HyperLink22 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink22;
+        
+        /// <summary>
+        /// HyperLink23 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink23;
+        
+        /// <summary>
+        /// HyperLink24 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink24;
+        
+        /// <summary>
+        /// HyperLink25 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink25;
+        
+        /// <summary>
+        /// HyperLink27 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink27;
+        
+        /// <summary>
         /// StatusUpdate control.
         /// </summary>
         /// <remarks>
@@ -544,6 +589,15 @@ namespace ProjectManager._master_pages {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink5;
         
         /// <summary>
+        /// Li2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li2;
+        
+        /// <summary>
         /// HyperLink6 control.
         /// </summary>
         /// <remarks>
@@ -551,6 +605,15 @@ namespace ProjectManager._master_pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink6;
+        
+        /// <summary>
+        /// HyperLink26 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink26;
         
         /// <summary>
         /// AddProjectStatusofWorkProgress control.
@@ -634,6 +697,15 @@ namespace ProjectManager._master_pages {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink19;
         
         /// <summary>
+        /// Li3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Li3;
+        
+        /// <summary>
         /// HyperLink14 control.
         /// </summary>
         /// <remarks>
@@ -659,6 +731,15 @@ namespace ProjectManager._master_pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink20;
+        
+        /// <summary>
+        /// HyperLink18 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink18;
         
         /// <summary>
         /// MiscMenu control.

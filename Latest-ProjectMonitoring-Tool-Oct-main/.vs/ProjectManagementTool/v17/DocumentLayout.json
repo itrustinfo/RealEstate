@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\NJS Projects\\2023-02-06_ONTB_STP_Flow_Blob_prj\\Latest-ProjectMonitoring-Tool-Oct-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E19DCE0D-CB9E-463D-BD60-6A790AB7D6A4}|ProjectManagementTool\\ProjectManagementTool.csproj|d:\\njs projects\\2023-02-06_ontb_stp_flow_blob_prj\\latest-projectmonitoring-tool-oct-main\\projectmanagementtool\\_modal_pages\\add-subtask.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E19DCE0D-CB9E-463D-BD60-6A790AB7D6A4}|ProjectManagementTool\\ProjectManagementTool.csproj|solutionrelative:projectmanagementtool\\_modal_pages\\add-subtask.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E19DCE0D-CB9E-463D-BD60-6A790AB7D6A4}|ProjectManagementTool\\ProjectManagementTool.csproj|d:\\njs projects\\2023-02-06_ontb_stp_flow_blob_prj\\latest-projectmonitoring-tool-oct-main\\projectmanagementtool\\_modal_pages\\add-subtask.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E19DCE0D-CB9E-463D-BD60-6A790AB7D6A4}|ProjectManagementTool\\ProjectManagementTool.csproj|solutionrelative:projectmanagementtool\\_modal_pages\\add-subtask.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "add-subtask.aspx",
+              "DocumentMoniker": "D:\\NJS Projects\\2023-02-06_ONTB_STP_Flow_Blob_prj\\Latest-ProjectMonitoring-Tool-Oct-main\\ProjectManagementTool\\_modal_pages\\add-subtask.aspx",
+              "RelativeDocumentMoniker": "ProjectManagementTool\\_modal_pages\\add-subtask.aspx",
+              "ToolTip": "D:\\NJS Projects\\2023-02-06_ONTB_STP_Flow_Blob_prj\\Latest-ProjectMonitoring-Tool-Oct-main\\ProjectManagementTool\\_modal_pages\\add-subtask.aspx",
+              "RelativeToolTip": "ProjectManagementTool\\_modal_pages\\add-subtask.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-07-18T06:32:15.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "add-subtask.aspx.cs",
+              "DocumentMoniker": "D:\\NJS Projects\\2023-02-06_ONTB_STP_Flow_Blob_prj\\Latest-ProjectMonitoring-Tool-Oct-main\\ProjectManagementTool\\_modal_pages\\add-subtask.aspx.cs",
+              "RelativeDocumentMoniker": "ProjectManagementTool\\_modal_pages\\add-subtask.aspx.cs",
+              "ToolTip": "D:\\NJS Projects\\2023-02-06_ONTB_STP_Flow_Blob_prj\\Latest-ProjectMonitoring-Tool-Oct-main\\ProjectManagementTool\\_modal_pages\\add-subtask.aspx.cs",
+              "RelativeToolTip": "ProjectManagementTool\\_modal_pages\\add-subtask.aspx.cs",
+              "ViewState": "AQIAANcCAAAAAAAAAAAAAN4CAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-18T06:29:25.69Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

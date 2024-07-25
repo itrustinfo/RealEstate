@@ -57,6 +57,9 @@ namespace ProjectManagementTool._modal_pages
                     string parent_Item_code = Request.QueryString["Parent_Item_code"];
                     string validFrom = Request.QueryString["ValidFrom"];
                     string validUntil = Request.QueryString["ValidUntil"];
+                    string cgst = Request.QueryString["CGST"];
+                    string sgst = Request.QueryString["SGST"];
+                    string gst = Request.QueryString["GST"];
 
                     DateTime registrationDate;
                     string validFromDate = " ";
@@ -84,6 +87,10 @@ namespace ProjectManagementTool._modal_pages
                     txtValidFrom.Text = validFromDate;
                     txtValidUntil.Text = validUntilDate;
                     txtVSPname.Text = vendor_specific_Name;
+                    txtCGST.Text = decimal.Parse(cgst).ToString("0.00");
+                    txtSGST.Text = decimal.Parse(sgst).ToString("0.00");
+                    txtGST.Text = decimal.Parse(gst).ToString("0.00");
+
                 }
             }
         }
@@ -126,7 +133,12 @@ namespace ProjectManagementTool._modal_pages
                     if (decimal.TryParse(txtMinQuantity.Text, out minQuantity)) { }
                     decimal rate;
                     if (decimal.TryParse(txtRate.Text, out rate)) { }
-
+                    decimal cgst;
+                    if (decimal.TryParse(txtCGST.Text, out cgst)) { }
+                    decimal sgst;
+                    if (decimal.TryParse(txtSGST.Text, out sgst)) { }
+                    decimal gst;
+                    if (decimal.TryParse(txtGST.Text, out gst)) { }
                     //check uniqueness of UniqueItemCode
                     DataSet ds = getdt.getVendorItemList();
                     string userEnteredValue = txtitemcode.Text.ToString();
@@ -184,7 +196,7 @@ namespace ProjectManagementTool._modal_pages
                     }
 
                     int count = getdt.insertORUpdateVendorsItems(itemID, txtitemcode.Text.ToString(), new Guid(DDLVendorID.SelectedValue.ToString()), txtgenricName.Text.ToString(), txtDescription.Text.ToString(),
-                            DDLUnit.SelectedItem.Text.ToString(), minQuantity, rate, CDate1, CDate2, itemLevel, txtVSPname.Text.ToString(), parent_item_code, new Guid(DDLItemCategory.SelectedValue.ToString()));
+                            DDLUnit.SelectedItem.Text.ToString(), minQuantity, rate, CDate1, CDate2, itemLevel, txtVSPname.Text.ToString(), parent_item_code, new Guid(DDLItemCategory.SelectedValue.ToString()), cgst,sgst,gst);
 
                     if (count > 0)
                     {

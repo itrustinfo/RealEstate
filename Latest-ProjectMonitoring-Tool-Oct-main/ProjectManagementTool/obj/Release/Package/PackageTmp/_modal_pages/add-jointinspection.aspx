@@ -52,7 +52,7 @@
                              <asp:ListItem Value="Guniting">Guniting</asp:ListItem>
                              <asp:ListItem Value="Laying & Jointing">Laying & Jointing</asp:ListItem>
                              <asp:ListItem Value="Hydro Testing">Hydro Testing</asp:ListItem>
-                             <asp:ListItem Value="EarthWork / Excavation">EarthWork / Excavation</asp:ListItem>
+                             <asp:ListItem Value="EarthWork/Excavation">EarthWork/Excavation</asp:ListItem>
                              <asp:ListItem Value="Barricading">Barricading</asp:ListItem>
                              <asp:ListItem Value="DeWatering the Sewage">DeWatering the Sewage</asp:ListItem>
                              <asp:ListItem Value="Shoring and Strutting">Shoring and Strutting</asp:ListItem>

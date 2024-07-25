@@ -71,7 +71,7 @@
                         <div class="table-responsive">
                   <asp:GridView ID="grdResources" runat="server" AutoGenerateColumns="False" Width="100%" PageSize="15" CssClass="table table-bordered" OnPageIndexChanging="grdResources_PageIndexChanging">
                     <Columns>
-                        <asp:BoundField DataField="ResourceType_Name" HeaderText="Resource Type" >
+                        <asp:BoundField DataField="CategoryName" HeaderText="Resource Category" >
                         </asp:BoundField>
                         <asp:BoundField DataField="ResourceName" HeaderText="Resource Name" >
                         </asp:BoundField>

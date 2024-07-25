@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace ProjectManagementTool._content_pages.purchase_order
@@ -119,7 +120,7 @@ namespace ProjectManagementTool._content_pages.purchase_order
             }
             else
             {
-                AddInvoice.Visible = false;
+                btnaddpo.Visible = false;
             }
 
         }
@@ -129,20 +130,21 @@ namespace ProjectManagementTool._content_pages.purchase_order
         {
             foreach (DataRow row in dtParent.Tables[0].Rows)
             {
-                string RABillNumber = "";
-                
+                //string RABillNumber = "";
+
                 TreeNode child = new TreeNode
                 {
-                    Text = Level == 0 ? LimitCharts(row["Name"].ToString()) : Level == 1 ? "Vendor-1" : Level == 2 ? LimitCharts(row["Invoice_Number"].ToString()) : RABillNumber,
-                    Value = Level == 0 ? row["WorkPackageUID"].ToString() : Level == 1 ? row["WorkPackageUID"].ToString() : Level == 2 ? row["InvoiceMaster_UID"].ToString() : row["InvoiceRABill_UID"].ToString(),
-                    Target = Level == 0 ? "WorkPackage" : Level == 1 ? "Invoice" : "RA Bill",
-                    ToolTip = Level == 0 ? LimitCharts(row["Name"].ToString()) : Level == 1 ? LimitCharts(row["Invoice_Number"].ToString()) : RABillNumber,
+                    Text = Level == 0 ? LimitCharts(row["Name"].ToString()) : Level == 1 ? LimitCharts(row["VendorUniqueNo"].ToString()) : Level == 2 ? LimitCharts(row["PO_Number"].ToString()) : Level == 3 ? LimitCharts(row["GenericName"].ToString()) : "",
+                    Value = Level == 0 ? row["WorkPackageUID"].ToString() : Level == 1 ? row["VendorID"].ToString() : Level == 2 ? row["PO_OrderID"].ToString() : row["PO_ItemID"].ToString(),
+                    Target = Level == 0 ? "WorkPackage" : Level == 1 ? "CompanyName" : Level == 2 ? "PO_Number" : Level == 3 ? "GenericName" : "",
+                    ToolTip = Level == 0 ? LimitCharts(row["Name"].ToString()) : Level == 1 ? LimitCharts(row["CompanyName"].ToString()) : Level == 2 ? LimitCharts(row["PO_Number"].ToString()) : Level == 3 ? LimitCharts(row["GenericName"].ToString()):""
                 };
 
                 if (ParentUID == "")
                 {
                     TreeView1.Nodes.Add(child);
-                    DataSet dschild = invoice.GetInvoiceMaster_by_WorkpackageUID(new Guid(child.Value));
+                    //DataSet dschild = invoice.GetInvoiceMaster_by_WorkpackageUID(new Guid(child.Value));
+                    DataSet dschild = invoice.GetVendorDetails_by_WorkpackageUID(new Guid(child.Value));
                     if (dschild.Tables[0].Rows.Count > 0)
                     {
                         PopulateTreeView(dschild, child, child.Value, 1);
@@ -152,7 +154,9 @@ namespace ProjectManagementTool._content_pages.purchase_order
                 else if (Level == 1)
                 {
                     treeNode.ChildNodes.Add(child);
-                    DataSet dschild = invoice.GetInvoiceMaster_by_WorkpackageUID(new Guid(child.Value));
+                    //DataSet dschild = invoice.GetInvoiceMaster_by_WorkpackageUID(new Guid(child.Value));
+                    DataSet dschild = invoice.GetPoOrderList_by_VendorID(new Guid(child.Value));
+
                     if (dschild.Tables[0].Rows.Count > 0)
                     {
                         PopulateTreeView(dschild, child, child.Value, 2);
@@ -161,12 +165,13 @@ namespace ProjectManagementTool._content_pages.purchase_order
                 else if (Level == 2)
                 {
                     treeNode.ChildNodes.Add(child);
-                    DataSet dssubchild = invoice.GetInvoiceRABills_by_InvoiceMaster_UID(new Guid(child.Value));
+                    DataSet dssubchild = invoice.GetPoItemList_by_PO_OrderID(new Guid(child.Value));
                     if (dssubchild.Tables[0].Rows.Count > 0)
                     {
                         PopulateTreeView(dssubchild, child, child.Value, 3);
                     }
                 }
+               
                 else
                 {
                     treeNode.ChildNodes.Add(child);
@@ -186,27 +191,27 @@ namespace ProjectManagementTool._content_pages.purchase_order
             DataSet ds = invoice.GetAllInvoiceTotalAmount_by_WorkpackageUID(new Guid(WorkpackageUID));
             if (ds.Tables[0].Rows.Count > 0)
             {
-                LblAllInvoiceTotal.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["TotalAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
+                //LblAllInvoiceTotal.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["TotalAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
                 //
-                LblAllInvoiceTotalVendor.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["TotalAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
+                //LblAllInvoiceTotalVendor.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["TotalAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["TotalDeductionAmount"].ToString()))
                 {
-                    LblAllInvoiceDeductionTotal.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["TotalDeductionAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
+                    //LblAllInvoiceDeductionTotal.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["TotalDeductionAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
                     //
-                    LblAllInvoiceDeductionTotalVendor.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["TotalDeductionAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
+                    //LblAllInvoiceDeductionTotalVendor.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["TotalDeductionAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
                 }
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["TotalNetAmount"].ToString()))
                 {
-                    LblAllInvoiceNetTotal.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["TotalNetAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
+                    //LblAllInvoiceNetTotal.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["TotalNetAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
                     //
-                    LblAllInvoiceNetTotalVednor.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["TotalNetAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
+                    //LblAllInvoiceNetTotalVednor.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["TotalNetAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
                 }
             }
             else
             {
-                LblAllInvoiceTotal.Text = "-";
-                LblAllInvoiceDeductionTotal.Text = "-";
-                LblAllInvoiceNetTotal.Text = "-";
+                //LblAllInvoiceTotal.Text = "-";
+                //LblAllInvoiceDeductionTotal.Text = "-";
+                //LblAllInvoiceNetTotal.Text = "-";
             }
         }
 
@@ -227,61 +232,129 @@ namespace ProjectManagementTool._content_pages.purchase_order
             {
                 VendorDiv.Visible = true;
                 InvoiceDiv.Visible = false;
-                Taxes.Visible = false;
+                PoTaxes.Visible = false;
 
-                RABillsDiv.Visible = false;
-                InvoiceDetails.Visible = false;
-                DataSet ds = invoice.GetInvoiceMaster_by_WorkpackageUID(new Guid(TreeView1.SelectedNode.Value));
+                PoItemsDiv.Visible = false;
+                PoDetails.Visible = false;
+                DataSet ds = invoice.GetVendorDetails_by_WorkpackageUID(new Guid(TreeView1.SelectedNode.Value));
+                if (ds.Tables[1].Rows.Count > 0)
+                {
+                    LblGrossWorkPackage.Text = ds.Tables[1].Rows[0]["TotalGrossAmount"].ToString();
+                    LblTaxWorkPackage.Text = ds.Tables[1].Rows[0]["TotalTaxAmount"].ToString();
+                    LblNetWorkPackage.Text = ds.Tables[1].Rows[0]["TotalNetAmount"].ToString();
+                }
+
                 GrdVendors.DataSource = ds;
                 GrdVendors.DataBind();
-                ActivityHeadingVendor.Text = "PO List for " + TreeView1.SelectedNode.Text;
+                ActivityHeadingVendor.Text = "WorkPackage Details";// for " + TreeView1.SelectedNode.Text;
                 BindAllInvoiceTotal(TreeView1.SelectedNode.Value);
                 btnRABillPrint.Visible = false;
 
             }
-            else if (TreeView1.SelectedNode.Target == "Invoice")
+            else if (TreeView1.SelectedNode.Target == "CompanyName")
             {
                 InvoiceDiv.Visible = true;
-                Taxes.Visible = false;
+                PoTaxes.Visible = false;
                 VendorDiv.Visible = false;
-                RABillsDiv.Visible = false;
-                InvoiceDetails.Visible = false;
-                DataSet ds = invoice.GetInvoiceMaster_by_WorkpackageUID(new Guid(TreeView1.SelectedNode.Value));
+                PoItemsDiv.Visible = false;
+                PoDetails.Visible = false;
+                DataSet dsvendor = invoice.GetVendorDetails_by_VendorUID(new Guid(TreeView1.SelectedNode.Value));
+                lblVendorID.Text = dsvendor.Tables[0].Rows[0]["VendorUniqueNo"].ToString();
+                lblVednorName.Text = dsvendor.Tables[0].Rows[0]["CompanyName"].ToString();
+                DateTime vendorRegDate = Convert.ToDateTime(dsvendor.Tables[0].Rows[0]["RegistrationDate"]);
+                string formattedDate = vendorRegDate.ToString("dd/MM/yyyy");
+                lblVednorRegdate.Text = formattedDate;
+                lblVednorAddr.Text = dsvendor.Tables[0].Rows[0]["Address1"].ToString();
+                if (dsvendor.Tables[1].Rows.Count > 0)
+                {
+                    LblVendorGrossAmount.Text = dsvendor.Tables[1].Rows[0]["GrossAmount"].ToString();
+                    LblVendorTaxAmount.Text = dsvendor.Tables[1].Rows[0]["TaxAmount"].ToString();
+                    LblVendorNetAmount.Text = dsvendor.Tables[1].Rows[0]["NetAmount"].ToString();
+                }
+
+                //DataSet ds = invoice.GetInvoiceMaster_by_WorkpackageUID(new Guid(TreeView1.SelectedNode.Value));
+                DataSet ds = invoice.GetPoOrderList_by_VendorID(new Guid(TreeView1.SelectedNode.Value));
+
                 GrdInvoice.DataSource = ds;
                 GrdInvoice.DataBind();
-                AddInvoice.HRef = "/_modal_pages/add-invoicemaster.aspx?PrjUID=" + DDlProject.SelectedValue + "&WorkUID=" + TreeView1.SelectedNode.Value;
-                ActivityHeading.Text = "PO List for " + TreeView1.SelectedNode.Text;
+                var addPoLink = (HtmlAnchor)InvoiceDiv.FindControl("AddPO");
+                if (addPoLink != null)
+                {
+                    addPoLink.HRef = "/_modal_pages/add-vendorpo.aspx?PrjUID=" + DDlProject.SelectedValue + "&VendorID=" + TreeView1.SelectedNode.Value ;
+                }
+                ActivityHeading.Text = "Vendor Details"; //for " + TreeView1.SelectedNode.Text;
                 BindAllInvoiceTotal(TreeView1.SelectedNode.Value);
                 btnRABillPrint.Visible = false;
 
                
             }
-            else if (TreeView1.SelectedNode.Target == "RA Bill")
+            else if (TreeView1.SelectedNode.Target == "PO_Number")
             {
 
-                Taxes.Visible = true;
-                RABillsDiv.Visible = true;
+                PoTaxes.Visible = false;
+                PoItemsDiv.Visible = true;
                 InvoiceDiv.Visible = false;
-                InvoiceDetails.Visible = true;
+                PoDetails.Visible = true;
                 VendorDiv.Visible = false;
-                DataSet ds = invoice.GetInvoiceDeduction_by_InvoiceMaster_UID(new Guid(TreeView1.SelectedNode.Value));
-                GrdInvoiceDeductions.DataSource = ds;
-                GrdInvoiceDeductions.DataBind();
+                DataSet ds = invoice.GetPoItemList_by_PO_OrderID(new Guid(TreeView1.SelectedNode.Value));
+                LblPONumber.Text = ds.Tables[1].Rows[0]["PO_Number"].ToString();
+                DateTime po_Date = Convert.ToDateTime(ds.Tables[1].Rows[0]["PO_Date"]);
+                string formattedDate = po_Date.ToString("dd/MM/yyyy");
+                LblPODate.Text = formattedDate;
+                LblPOTotalAmount.Text = ds.Tables[1].Rows[0]["PO_TotalAmount"].ToString();
+                LblPOTaxAmount.Text = ds.Tables[1].Rows[0]["PO_TotalTaxes"].ToString();
+                LblPONetAmount.Text = ds.Tables[1].Rows[0]["PO_NetAmount"].ToString();
+                GrdRABillItems.DataSource = ds.Tables[0];
+                GrdRABillItems.DataBind();
+                var addPoItemLink = (HtmlAnchor)PoItemsDiv.FindControl("AddPoItem");
+                if (addPoItemLink != null)
+                {
+                    string vendorUID = TreeView1.SelectedNode.Parent?.Value ?? "UnknownValue"; // Fetch parent node value (CompanyName)
+                    addPoItemLink.HRef = "/_modal_pages/add-po-item.aspx?PrjUID=" + DDlProject.SelectedValue + "&PO_OrderID=" + TreeView1.SelectedNode.Value + "&VendorID=" + vendorUID;
+                }
+                ActivityHeading.Text = "PO-Items List for " + TreeView1.SelectedNode.Text;
+                //for Taxes
+                var addPoTaxesLink = (HtmlAnchor)PoTaxes.FindControl("AddInvoiceDeductions");
+                if (addPoTaxesLink != null)
+                {
+                    addPoTaxesLink.HRef = "/_modal_pages/add-po-taxes.aspx?PrjUID=" + DDlProject.SelectedValue + "&PO_OrderID=" + TreeView1.SelectedNode.Value;
+                }
+                //BindInvoiceMaster(TreeView1.SelectedNode.Value);
+                //BindRAbills(TreeView1.SelectedNode.Value);
 
-                //
-                BindInvoiceMaster(TreeView1.SelectedNode.Value);
-                BindRAbills(TreeView1.SelectedNode.Value);
-                //
                 btnRABillPrint.Visible = false;
             }
+            //else if (TreeView1.SelectedNode.Target == "GenericName")
+            //{
+
+            //    Taxes.Visible = true;
+            //    PoItemsDiv.Visible = true;
+            //    InvoiceDiv.Visible = false;
+            //    PoDetails.Visible = true;
+            //    VendorDiv.Visible = false;
+            //    DataSet ds = invoice.GetPoItemList_by_PO_OrderID(new Guid(TreeView1.SelectedNode.Value));
+            //    GrdRABillItems.DataSource = ds;
+            //    GrdRABillItems.DataBind();
+            //    //var addPoItemLink = (HtmlAnchor)InvoiceDiv.FindControl("AddPoItem");
+            //    //if (addPoItemLink != null)
+            //    //{
+            //    //    addPoItemLink.HRef = "/_modal_pages/add-po-item.aspx?PrjUID=" + DDlProject.SelectedValue + "&PO_OrderID=" + TreeView1.SelectedNode.Value;
+            //    //}
+            //    //ActivityHeading.Text = "PO-Items List for " + TreeView1.SelectedNode.Text;
+            //    //
+            //    BindInvoiceMaster(TreeView1.SelectedNode.Value);
+            //    BindRAbills(TreeView1.SelectedNode.Value);
+            //    //
+            //    btnRABillPrint.Visible = false;
+            //}
             else
             {
-                Taxes.Visible = false;
-                
-                RABillsDiv.Visible = true;
+                PoTaxes.Visible = false;
+
+                PoItemsDiv.Visible = true;
                 InvoiceDiv.Visible = false;
-                InvoiceDetails.Visible = false;
-                AddRAbill.Visible = false;
+                PoDetails.Visible = false;
+                PoItemsDiv.Visible = false;
 
                 DataTable dts = new DataTable();
                 
@@ -302,23 +375,23 @@ namespace ProjectManagementTool._content_pages.purchase_order
             DataSet ds = invoice.GetInvoiceMaster_by_InvoiceMaster_UID(new Guid(InvoiceMaster_UID));
             if (ds.Tables[0].Rows.Count > 0)
             {
-                LblInvoiceNumber.Text = ds.Tables[0].Rows[0]["Invoice_Number"].ToString();
+                LblPONumber.Text = ds.Tables[0].Rows[0]["Invoice_Number"].ToString();
                 if (ds.Tables[0].Rows[0]["Invoice_Date"].ToString() != "")
                 {
-                    LblInvoiceDate.Text = Convert.ToDateTime(ds.Tables[0].Rows[0]["Invoice_Date"].ToString()).ToString("dd MMM yyyy");
+                    LblPODate.Text = Convert.ToDateTime(ds.Tables[0].Rows[0]["Invoice_Date"].ToString()).ToString("dd MMM yyyy");
                 }
                
 
                
-                LblInvoiceTotalAmount.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["Invoice_TotalAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
+                LblPOTotalAmount.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["Invoice_TotalAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Invoice_DeductionAmount"].ToString()))
                 {
-                    LblInvoiceDeductionAmount.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["Invoice_DeductionAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
+                    LblPOTaxAmount.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + Convert.ToDouble(ds.Tables[0].Rows[0]["Invoice_DeductionAmount"].ToString()).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
                 }
                
                 if (!string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Invoice_DeductionAmount"].ToString()) && !string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Invoice_AdditionAmount"].ToString()))
                 {
-                    LblNetAmount.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + (Convert.ToDouble(ds.Tables[0].Rows[0]["Invoice_TotalAmount"].ToString()) + Convert.ToDouble(ds.Tables[0].Rows[0]["Invoice_AdditionAmount"].ToString()) - Convert.ToDouble(ds.Tables[0].Rows[0]["Invoice_DeductionAmount"].ToString())).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
+                    LblPONetAmount.Text = ds.Tables[0].Rows[0]["Currency"].ToString() + " " + (Convert.ToDouble(ds.Tables[0].Rows[0]["Invoice_TotalAmount"].ToString()) + Convert.ToDouble(ds.Tables[0].Rows[0]["Invoice_AdditionAmount"].ToString()) - Convert.ToDouble(ds.Tables[0].Rows[0]["Invoice_DeductionAmount"].ToString())).ToString("#,##.00", CultureInfo.CreateSpecificCulture(ds.Tables[0].Rows[0]["Currency_CultureInfo"].ToString()));
                 }
             }
         }
@@ -340,25 +413,25 @@ namespace ProjectManagementTool._content_pages.purchase_order
             return getdt.GetDeductionMasterName_by_UID(new Guid(UID));
         }
 
-        protected void GrdRABillItems_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                e.Row.Cells[2].Text = "Numbers";
-                e.Row.Cells[3].Text = "10000";
-                e.Row.Cells[4].Text = "1000";
-            }
+        //protected void GrdRABillItems_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+        //        e.Row.Cells[2].Text = "Numbers";
+        //        e.Row.Cells[3].Text = "10000";
+        //        e.Row.Cells[4].Text = "1000";
+        //    }
 
-        }
+        //}
 
-        protected void GrdVendors_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                e.Row.Cells[1].Text = "V-1001";
-                e.Row.Cells[2].Text = "Vendor-1 ";
+        //protected void GrdVendors_RowDataBound(object sender, GridViewRowEventArgs e)
+        //{
+        //    if (e.Row.RowType == DataControlRowType.DataRow)
+        //    {
+        //        e.Row.Cells[1].Text = "V-1001";
+        //        e.Row.Cells[2].Text = "Vendor-1 ";
                
-            }
-        }
+        //    }
+        //}
     }
 }

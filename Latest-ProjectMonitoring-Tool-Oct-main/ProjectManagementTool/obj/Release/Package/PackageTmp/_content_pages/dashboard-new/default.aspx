@@ -262,7 +262,27 @@
 
                                 </div>
     </div>
+        <div class="container-fluid" id="divItemGraph" runat="server" visible="True" style="opacity: 0.9 !important">
+            <div class="row">
+                <div class="col-lg-12 col-xl-12 form-group">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div class="row">
+                           <div class="col-md-6 col-lg-6 form-group" align="left"><h6 class="card-title text-muted text-uppercase" id="h1" runat="server" >Stock Items Chart</h6></div>
+                            <div class="col-md-6 col-lg-6 form-group" align="right"><asp:Button ID="Button1" runat="server" Text="Print Chart" Visible="true" OnClientClick="printdiv('default_master_body_divItemStocks');" ClientIDMode="Static"/></div></div>
+                                 <asp:Literal ID="ltScript_ItemStocks" runat="server"></asp:Literal>
+                                  <div id="chart_divItemStocks" style="width:100%; height:300px;">
+                                     
+                                  </div><br /><br /><br />
+                            
+                        </div>
+                        </div>
+                    </div>
 
+                </div>
+            </div>
+        </div>
         <div class="container-fluid" id="divProgresschart" runat="server" visible="false" style="opacity: 0.9 !important">
             <div class="row">
                 <div class="col-lg-12 col-xl-12 form-group">
@@ -365,7 +385,7 @@
                                 <!-- Chart 3: Alerts Section - Ends-->
 
                                 <!-- Chart 4: Status of Design, Drawings & Documentation - Begins-->
-                                <div class="col-md-4 col-xl-5 mb-4">
+                                <div class="col-md-4 col-xl-6 mb-4" style="display:block">
                                     <div class="card h-100">
                                         <div class="card-body" style="background-color:#ffffff !important; ">
                                             <h6 class="card-title text-muted text-uppercase" style="display: inline-block;font-weight:bold">Status of Design, Drawings & Documentation </h6>
@@ -378,11 +398,26 @@
                        </asp:Label>
                                     </div>
                                 </div>
+
+
+                                <div class="col-md-4 col-xl-6 mb-4">
+                                    <div class="card h-100">
+                                        <div class="card-body" style="background-color:#ffffff !important; ">
+                                            <h6 class="card-title text-muted text-uppercase" style="display: inline-block;font-weight:bold">Current stock Levels of Key materials</h6>
+                                          
+                                            <div id="StockChart_Div" style="width:100%; height:450px; overflow:scroll;"></div>
+                                             <asp:Literal ID="ltScript_Stock" runat="server" ></asp:Literal>
+                                        </div>
+                                      
+                                       
+                                    </div>
+                                </div>
+
                                 <!-- Chart 4: Status of Design, Drawings & Documentation - Ends -->
 
                               
                                 <div id="divCamera" class="col-md-6 col-xl-4 mb-4"
-                                    style="display:none">
+                                    style="display:block">
                                     <div class="card h-100">
                                         <div class="card-body" style="background-color:#ffffff !important">
                                             <div class="input-group" style="margin-bottom:8px;">
@@ -390,9 +425,7 @@
                                                     <span class="input-group-text">IP Camera List</span>
                                                 </div>
                                             </div><br />
-                                            <div id="default_master_body_divCameralist"
-                                                style="overflow-y:scroll;font-size:medium">
-                                                <div>No Camera added</div>
+                                            <div id="divCameralist" runat="server" style="overflow-y:scroll;font-size:medium">
                                             </div>
                                             <h6 id="camera" style="display:none;font-weight:800">As you have denied
                                                 access to
@@ -425,7 +458,7 @@
                                         <div class="card-body" style="background-color:#ffffff !important">
                                             <a href="../engineering-status-update-fasttrack/default.aspx?fromdashboard=yes"
                                                 <h6 class="card-title text-muted text-uppercase text-decoration-none"
-                                                style="display: inline-block;font-weight:bold">Status of Resource Deployment&#128279;
+                                                style="display: inline-block;font-weight:bold">Status of Resource (Labour & Equipment) Deployment&#128279;
                                                 </h6>
                                             </a>
                                             <asp:Literal ID="ltScript_ResourceGraph" runat="server"></asp:Literal>
@@ -439,14 +472,14 @@
                                 <!-- Chart 5: Status of Resource Deployment - Ends-->
 
                                 <!-- Chart 6: Quick Links Section - Begins-->
-                                <div id="divsyncdetails" class="col-md-6 col-xl-3 mb-4">
+                                <div id="divsyncdetails" class="col-md-6 col-xl-4 mb-4">
                                     <div class="card h-100">
                                         <div class="card-body"
                                             style="font-weight:400;background-color:#ffffff !important">
                                             <h6 class="card-title text-muted text-uppercase"
                                                 style="color:forestgreen !important">Quick Access Links</h6>
                                             <table style="width:100%;line-height:30px">
-                                                <tr id="ReconDocs">
+                                                <tr id="ReconDocs" style="display:none">
                                                     <td><a class="text-decoration-none"
                                                             href="../documents-contractor/?&type=Recon&PrjUID=fe0b8a4d-4d13-46e3-bcec-5f14df5e0278"
                                                             id="hlReconciliationdocs" runat="server">Reconciliation
@@ -472,7 +505,7 @@
                                                 <tr>
                                                     <td><a class="text-decoration-none"
                                                             href="../rabill-summary/?&PrjUID=fe0b8a4d-4d13-46e3-bcec-5f14df5e0278"
-                                                            id="hlRABills" runat="server">RA Bills</a></td>
+                                                            id="hlRABills" runat="server">Bills</a></td>
                                                     <td><span></span></td>
                                                     <td><span id="lblRABills" runat="server">0</span></td>
                                                 </tr>
@@ -498,7 +531,7 @@
                                                     <td><span></span></td>
                                                     <td><span id="lblInsurance" runat="server">1</span></td>
                                                 </tr>
-                                                <tr>
+                                                <tr style="display:none">
                                                     <td><a class="text-decoration-none"
                                                             href="../documents-ontb/?&fromdashboard=yes"
                                                             id="hlInstructionManual" runat="server">Instruction
@@ -507,19 +540,40 @@
                                                     <td><span></span></td>
                                                     <td><span id="lblInstruction" runat="server">1</span></td>
                                                 </tr>
-                                                <tr>
+                                                <tr style="display:none">
                                                     <td><a class="text-decoration-none"
                                                             href="../documents-ontb/?&fromdashboard=yes"
                                                             id="hlMOM" runat="server">MOM Documents</a></td>
                                                     <td><span></span></td>
                                                     <td><span id="lblMOM" runat="server">1</span></td>
                                                 </tr>
-                                                <tr>
+                                                <tr style="display:none">
                                                     <td><a class="text-decoration-none"
                                                             href="../documents-ontb/?&fromdashboard=yes"
                                                             id="hlArchived" runat="server">Archived Documents</a></td>
                                                     <td><span></span></td>
                                                     <td><span id="lblArchived" runat="server">0</span></td>
+                                                </tr>
+                                                 <tr>
+                                                    <td><a class="text-decoration-none"
+                                                            href="../documents-ontb/?&fromdashboard=yes"
+                                                            id="A1" runat="server">Pending Orders</a></td>
+                                                    <td><span></span></td>
+                                                    <td><span id="Span1" runat="server">3</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a class="text-decoration-none"
+                                                            href="../documents-ontb/?&fromdashboard=yes"
+                                                            id="A2" runat="server">Low Stock Alerts-Items</a></td>
+                                                    <td><span></span></td>
+                                                    <td><span id="Span2" runat="server">2</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a class="text-decoration-none"
+                                                            href="../documents-ontb/?&fromdashboard=yes"
+                                                            id="A3" runat="server">Back Orders</a></td>
+                                                    <td><span></span></td>
+                                                    <td><span id="Span3" runat="server">2</span></td>
                                                 </tr>
                                                
                                             </table>

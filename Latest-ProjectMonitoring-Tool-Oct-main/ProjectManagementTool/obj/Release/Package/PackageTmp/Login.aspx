@@ -10,6 +10,22 @@
   <link href="_assets/images/favicon.png" rel="icon" />
 
     <link rel="stylesheet" href="_assets/styles/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css"/>
+
+      <script type="text/javascript">
+     function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("txtpassword");
+            var eyeIcon = document.getElementById("eyeIcon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.className = "mdi mdi-eye-off-outline";
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.className = "mdi mdi-eye-outline";
+            }
+        }
+    </script>
 
 </head>
 <body>
@@ -22,21 +38,21 @@
               
             <div class="auto-form-wrapper">
                 <div style="width:100%">
-                <div style="text-align:left;float:left;width:30%;padding-top:15px" id="VEPL" runat="server">
-                    <img src="_assets/images/viswaraj _logo.jpg" height="50" width="150" alt="VEPL" /><br />
-                    <span style="vertical-align:middle; color:#0521AC; font-size:large;">M/s Vishvaraj Environment Pvt Ltd</span>
-                </div>
-                <div style="text-align:center;float:left;width:40%;padding-left:20px" runat="server">
+                <%--<div style="text-align:left;float:left;width:30%;padding-top:15px;display:none" id="VEPL" runat="server">
+                    <img src="_assets/images/viswaraj _logo.jpg" height="50" width="150" alt="VEPL" style="display:none"/><br />
+                    <span style="vertical-align:middle; color:#0521AC; font-size:large;"></span>
+                </div>--%>
+                <div style="text-align:center;float:left;width:100%;padding-left:20px" runat="server">
                     <asp:Image ID="sLogo" runat="server" />
                     <span class="font-weight-bold" style="vertical-align:middle; color:#0521AC; font-size:xx-large;"><asp:Label ID="LblTitle" runat="server"></asp:Label></span>
                     <h5 style="text-align:center; margin-top:10px;"><asp:Label ID="LblDescription" runat="server"></asp:Label></h5>
                 
                 </div>
-                    <div style="text-align:left;float:left;width:10%;margin-top:-20px">&nbsp;</div>
-                 <div style="text-align:center;float:left;width:20%;vertical-align:top" id="Div1" runat="server">
+                   <%-- <div style="text-align:left;float:left;width:10%;margin-top:-20px">&nbsp;</div>
+                 <div style="text-align:center;float:left;width:20%;vertical-align:top" id="Div1" runat="server" visible="false">
                     <img src="_assets/images/Picture5.png" height="120" width="130" alt="BWSSB" />
                    <span style="vertical-align:middle; color:#0521AC; font-size:large;">BWSSB</span>
-                </div>
+                </div>--%>
                 <div style="float:none;clear:both;width:100%">&nbsp;</div>
                 </div>
                 
@@ -61,9 +77,9 @@
                   <div class="input-group">
                     <input type="password"  class="form-control" id="txtpassword" runat="server" required placeholder="password" style="font-family:Segoe UI, Tahoma, Geneva, Verdana, 'sans-serif';font-size:larger"/>
                     <div class="input-group-append">
-                      <span class="input-group-text">
-                        <i class="mdi mdi-check-circle-outline"></i>
-                      </span>
+                     <span class="input-group-text" style="cursor: pointer;" onclick="togglePasswordVisibility()">
+                                                    <i id="eyeIcon" class="mdi mdi-eye-outline"></i>
+                                                </span>
                     </div>
                   </div>
                 </div>
@@ -82,7 +98,7 @@
                       </div>
                 <div class="form-group d-flex justify-content-between">
                   <div class="form-check form-check-flat mt-0" style="text-align:center">
-                    <asp:Label ID="Label2" runat="server" ForeColor="blue" Font-Bold="true" Text="Site Design and Concept by NJSEI MIS Team"></asp:Label>
+                    <asp:Label ID="Label2" runat="server" ForeColor="blue" Font-Bold="true" Text=""></asp:Label>
                      
                     
                   </div>

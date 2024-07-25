@@ -15,7 +15,8 @@
     <AssemblyName>ProjectManagementTool</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -183,7 +184,9 @@
     <Content Include="_content_pages\engineering-fast-view\Default.aspx" />
     <Content Include="_content_pages\engineering-status-update-fasttrack\default.aspx" />
     <Content Include="_content_pages\finance_mobilisation_advance\default.aspx" />
+    <Content Include="_content_pages\financial-status-update-New\default.aspx" />
     <Content Include="_content_pages\forms-update\Default.aspx" />
+    <Content Include="_content_pages\invoice-incoming\default.aspx" />
     <Content Include="_content_pages\invoice-abstract\default.aspx" />
     <Content Include="_content_pages\invoice\default.aspx" />
     <Content Include="_content_pages\joint-inspection\default.aspx" />
@@ -212,6 +215,7 @@
     <Content Include="_content_pages\report-document-status\default.aspx" />
     <Content Include="_content_pages\report-document-summary\Default.aspx" />
     <Content Include="_content_pages\report-Financial-Progress\default.aspx" />
+    <Content Include="_content_pages\report-goods-receipt-notes-with-po\default.aspx" />
     <Content Include="_content_pages\report-instruction\default.aspx" />
     <Content Include="_content_pages\report-invoice-rabill-deduction\default.aspx" />
     <Content Include="_content_pages\report-issues\default.aspx" />
@@ -228,10 +232,14 @@
     <Content Include="_content_pages\report-projectphysicalprogress\default.aspx" />
     <Content Include="_content_pages\report-projectworkprogress\default.aspx" />
     <Content Include="_content_pages\report-PMC\default.aspx" />
+    <Content Include="_content_pages\report-purchase-order-entry\default.aspx" />
     <Content Include="_content_pages\report-reconciliation-phase\default.aspx" />
     <Content Include="_content_pages\report-reconciliation-status\default.aspx" />
     <Content Include="_content_pages\report-reconciliation\default.aspx" />
+    <Content Include="_content_pages\report-resource-request\default.aspx" />
     <Content Include="_content_pages\report-resourcedeployment\default.aspx" />
+    <Content Include="_content_pages\report-stock-issue\default.aspx" />
+    <Content Include="_content_pages\report-stock\default.aspx" />
     <Content Include="_content_pages\report-suez-physical-progress\default.aspx" />
     <Content Include="_content_pages\report-summary-design-and-drawing-works-dwg-issue\default.aspx" />
     <Content Include="_content_pages\report-user-status1\default.aspx" />
@@ -294,6 +302,7 @@
     <Content Include="_modal_pages\add-pagenamemaster.aspx" />
     <Content Include="_modal_pages\add-parentitem.aspx" />
     <Content Include="_modal_pages\add-paymentbreakupterms.aspx" />
+    <Content Include="_modal_pages\add-po-item.aspx" />
     <Content Include="_modal_pages\add-prjmaster-mail-settings.aspx" />
     <Content Include="_modal_pages\add-projectphysicalprogress.aspx" />
     <Content Include="_modal_pages\add-projectstatus.aspx" />
@@ -310,6 +319,7 @@
     <Content Include="_modal_pages\add-treenodemaster.aspx" />
     <Content Include="_modal_pages\add-userfunctionalityassignment.aspx" />
     <Content Include="_modal_pages\add-vendoritemsmaster.aspx" />
+    <Content Include="_modal_pages\add-vendorpo.aspx" />
     <Content Include="_modal_pages\add-vendorsmaster.aspx" />
     <Content Include="_modal_pages\add-wkpgmaster-data.aspx" />
     <Content Include="_modal_pages\addtask-targetschedule-revised.aspx" />
@@ -843,12 +853,26 @@
     <Compile Include="_content_pages\finance_mobilisation_advance\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="_content_pages\financial-status-update-New\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_content_pages\financial-status-update-New\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="_content_pages\forms-update\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="_content_pages\forms-update\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_content_pages\invoice-incoming\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_content_pages\invoice-incoming\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="_content_pages\invoice-abstract\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
@@ -1046,6 +1070,13 @@
     <Compile Include="_content_pages\report-Financial-Progress\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="_content_pages\report-goods-receipt-notes-with-po\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_content_pages\report-goods-receipt-notes-with-po\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="_content_pages\report-instruction\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1158,6 +1189,13 @@
     <Compile Include="_content_pages\report-PMC\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="_content_pages\report-purchase-order-entry\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_content_pages\report-purchase-order-entry\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="_content_pages\report-reconciliation-phase\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1179,11 +1217,32 @@
     <Compile Include="_content_pages\report-reconciliation\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="_content_pages\report-resource-request\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_content_pages\report-resource-request\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="_content_pages\report-resourcedeployment\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="_content_pages\report-resourcedeployment\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_content_pages\report-stock-issue\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_content_pages\report-stock-issue\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_content_pages\report-stock\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_content_pages\report-stock\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="_content_pages\report-suez-physical-progress\default.aspx.cs">
@@ -1626,6 +1685,13 @@
     <Compile Include="_modal_pages\add-paymentbreakupterms.aspx.designer.cs">
       <DependentUpon>add-paymentbreakupterms.aspx</DependentUpon>
     </Compile>
+    <Compile Include="_modal_pages\add-po-item.aspx.cs">
+      <DependentUpon>add-po-item.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_modal_pages\add-po-item.aspx.designer.cs">
+      <DependentUpon>add-po-item.aspx</DependentUpon>
+    </Compile>
     <Compile Include="_modal_pages\add-prjmaster-mail-settings.aspx.cs">
       <DependentUpon>add-prjmaster-mail-settings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1737,6 +1803,13 @@
     </Compile>
     <Compile Include="_modal_pages\add-vendoritemsmaster.aspx.designer.cs">
       <DependentUpon>add-vendoritemsmaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="_modal_pages\add-vendorpo.aspx.cs">
+      <DependentUpon>add-vendorpo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="_modal_pages\add-vendorpo.aspx.designer.cs">
+      <DependentUpon>add-vendorpo.aspx</DependentUpon>
     </Compile>
     <Compile Include="_modal_pages\add-vendorsmaster.aspx.cs">
       <DependentUpon>add-vendorsmaster.aspx</DependentUpon>

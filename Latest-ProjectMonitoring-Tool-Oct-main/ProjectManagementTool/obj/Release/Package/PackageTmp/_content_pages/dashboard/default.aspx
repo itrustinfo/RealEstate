@@ -333,7 +333,7 @@
                     </div>
                 </div>
                 
-               <div class="col-md-6 col-xl-4 mb-4">
+               <div class="col-md-6 col-xl-4 mb-4" style="display:block">
                     <div class="card h-100">
                         <div class="card-body" style="background-color:#EBE76C !important">
                             <h6 class="card-title text-muted text-uppercase font-weight-bold">Status of Design,Drawings & Documentation </h6>
@@ -348,6 +348,19 @@
                             </div>
                        <asp:Label ID="lblTotalMasterListDocuments" runat="server" CssClass="card-footer font-weight-solid text-center" ForeColor="DarkBlue">
                        </asp:Label>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-xl-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body" style="background-color:#EBE76C !important">
+                            <h6 class="card-title text-muted text-uppercase font-weight-bold">Current stock Levels of Key materials</h6>
+                          
+                             <asp:Literal ID="ltScript_Stock" runat="server"></asp:Literal>
+                          
+                      <div id="StockChart_Div" style="width:100%; height:275px;"></div>
+                            </div>
+                       
+                      
                     </div>
                 </div>
               <div id="divsyncdetails" runat="server" visible="false" class="col-md-6 col-xl-4 mb-4">

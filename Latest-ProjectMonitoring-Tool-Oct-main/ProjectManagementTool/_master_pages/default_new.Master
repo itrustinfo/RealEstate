@@ -215,6 +215,7 @@ background: url('../../_assets/images/pageloading.gif') 50% 50% no-repeat;
                                      <asp:HyperLink CssClass="dropdown-item" ID="RAbill" runat="server" NavigateUrl="/_content_pages/rabill-summary" ToolTip="RA Bills">RA Bills</asp:HyperLink>
                                      <asp:HyperLink CssClass="dropdown-item" ID="RAbillPriceAdj" runat="server" NavigateUrl="/_content_pages/rabill-priceadj" ToolTip="RA Bills Price Adj">RA Bills Price Adj</asp:HyperLink>
                                      <asp:HyperLink CssClass="dropdown-item" ID="Invoice" runat="server" NavigateUrl="/_content_pages/invoice" ToolTip="Invoice">Invoice</asp:HyperLink>
+                                     <asp:HyperLink CssClass="dropdown-item" ID="InvoiceIncm" runat="server" NavigateUrl="/_content_pages/invoice-incoming" ToolTip="Invoice">Invoice Incoming</asp:HyperLink>
                                      <asp:HyperLink CssClass="dropdown-item" ID="EngineeringFast" runat="server" NavigateUrl="/_content_pages/engineering-fast-view" ToolTip="Engineering" Visible="true">Engineering Fast Access</asp:HyperLink>
                                      <asp:HyperLink CssClass="dropdown-item" ID="HyperLink18" runat="server" NavigateUrl="/_content_pages/purchase-order" ToolTip="PO" Visible="true">Purchase Order</asp:HyperLink>
                                 </div>
@@ -257,7 +258,7 @@ background: url('../../_assets/images/pageloading.gif') 50% 50% no-repeat;
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                      <asp:HyperLink CssClass="dropdown-item" ID="ReportContractData" runat="server" NavigateUrl="/_content_pages/report-contractdata" ToolTip="Contract Details">Contract Details</asp:HyperLink>
-                                     <li class="dropdown-submenu" id="MenuSTPContractorReports" runat="server">
+                                     <li class="dropdown-submenu" id="MenuSTPContractorReports" runat="server" style="display:none">
                                         <a class="dropdown-item dropdown-toggle" data-toggle="dropdown" href="#">STP Contractor Reports</a>
                                         <ul class="dropdown-menu">
                                             <asp:HyperLink CssClass="dropdown-item" ID="ReportReconciliationPhase" runat="server" NavigateUrl="/_content_pages/report-reconciliation-phase" ToolTip="Reconciliation">Status of Documents for Contractor</asp:HyperLink>
@@ -288,10 +289,14 @@ background: url('../../_assets/images/pageloading.gif') 50% 50% no-repeat;
                                     <asp:HyperLink CssClass="dropdown-item" ID="ReportPmcDocumentStatus" runat="server" NavigateUrl="/_content_pages/report-document-status" ToolTip="Status of STP Documents">Status of STP Documents</asp:HyperLink>
                                     <asp:HyperLink CssClass="dropdown-item" ID="ReportStatusSummaryReport" runat="server" NavigateUrl="/_content_pages/report-mis-status-summary" ToolTip="Summary Report STP">Summary Status Report STP</asp:HyperLink>
                                     <asp:HyperLink CssClass="dropdown-item" ID="HyperLink2" runat="server" NavigateUrl="/_content_pages/report-user-status1" ToolTip="User Status Report STP">User Status Report STP</asp:HyperLink>
-                                    <asp:HyperLink CssClass="dropdown-item" ID="ReportPMC" runat="server" NavigateUrl="/_content_pages/report-PMC" ToolTip="Report for PMC">Correspondence Report for PMC</asp:HyperLink>
-                                    <asp:HyperLink CssClass="dropdown-item" ID="ReportBWSSB" runat="server" NavigateUrl="/_content_pages/report-BWSSB" ToolTip="Report for PMC">Correspondence Report for BWSSB</asp:HyperLink>
+                                    <asp:HyperLink CssClass="dropdown-item" ID="ReportPMC" runat="server" NavigateUrl="/_content_pages/report-PMC" ToolTip="Report for PMC" style="display:none">Correspondence Report for PMC</asp:HyperLink>
+                                    <asp:HyperLink CssClass="dropdown-item" ID="ReportBWSSB" runat="server" NavigateUrl="/_content_pages/report-BWSSB" ToolTip="Report for PMC" style="display:none">Correspondence Report for BWSSB</asp:HyperLink>
                                    <asp:HyperLink CssClass="dropdown-item" ID="HyperLink21" runat="server" NavigateUrl="/_content_pages/report-item-master" ToolTip="Report Item Master">Item Master</asp:HyperLink>
-                                   
+                                    <asp:HyperLink CssClass="dropdown-item" ID="HyperLink22" runat="server" NavigateUrl="/_content_pages/report-purchase-order-entry" ToolTip="Report Purchase Order Entry">Purchase Order Entry</asp:HyperLink>
+                                    <asp:HyperLink CssClass="dropdown-item" ID="HyperLink23" runat="server" NavigateUrl="/_content_pages/report-goods-receipt-notes-with-po" ToolTip="Goods Receipt Notes With Po">Goods Receipt Notes With Po</asp:HyperLink>
+                                    <asp:HyperLink CssClass="dropdown-item" ID="HyperLink24" runat="server" NavigateUrl="/_content_pages/report-stock-issue" ToolTip="Stock Issue Report">Stock Issue Report</asp:HyperLink>
+                                    <asp:HyperLink CssClass="dropdown-item" ID="HyperLink25" runat="server" NavigateUrl="/_content_pages/report-stock" ToolTip="Stock Report">Stock Report</asp:HyperLink>
+                                   <asp:HyperLink CssClass="dropdown-item" ID="HyperLink27" runat="server" NavigateUrl="/_content_pages/report-resource-request" ToolTip="Resource Request Report">Resource Request</asp:HyperLink>
                                     <%--<asp:HyperLink CssClass="dropdown-item" ID="ReportWkgMasterDataSettings" runat="server" NavigateUrl="/_content_pages/report-wkpg-master-datasettings" ToolTip="WorkPackage Master Data Update Settings">WorkPackage Master Data Update Settings</asp:HyperLink>
                                     <asp:HyperLink CssClass="dropdown-item" ID="ReportWkgMasterData" runat="server" NavigateUrl="/_content_pages/report-wkpg-master-data" ToolTip="WorkPackage Master Data">WorkPackage Master Data Update</asp:HyperLink>
                                     <asp:HyperLink CssClass="dropdown-item" ID="ReportSuezFinanace" runat="server" NavigateUrl="/_content_pages/report-invoice-rabill-deduction" ToolTip="WorkPackage Master Data">Financial Progress CP0203</asp:HyperLink>
@@ -324,16 +329,23 @@ background: url('../../_assets/images/pageloading.gif') 50% 50% no-repeat;
                                     <span class="nav-link--text">Status Update</span>
                                 </a>
 
-                                <div class="dropdown-menu" aria-labelledby="navLinkUpdateStatus">
+                               <ul class="dropdown-menu" aria-labelledby="navLinkUpdateStatus">
                                     <asp:HyperLink CssClass="dropdown-item" ID="HyperLink5" runat="server" NavigateUrl="/_content_pages/engineering-status-update-fasttrack" ToolTip="Engineering">Engineering</asp:HyperLink>
-                                    <asp:HyperLink CssClass="dropdown-item" ID="HyperLink6" runat="server" NavigateUrl="/_content_pages/financial-status-update" ToolTip="Financial">Financial</asp:HyperLink>
-                             <%--       <asp:HyperLink CssClass="dropdown-item" ID="HyperLink7" runat="server" NavigateUrl="/_content_pages/finance_mobilisation_advance" ToolTip="Financial">Mobilization Advance</asp:HyperLink>--%>
+                                     <li class="dropdown-submenu" id="Li2" runat="server">
+                                        <a class="dropdown-item dropdown-toggle" data-toggle="dropdown" href="#">Financial</a>
+                                        <ul class="dropdown-menu">
+                                            <asp:HyperLink CssClass="dropdown-item" ID="HyperLink6" runat="server" NavigateUrl="/_content_pages/financial-status-update" ToolTip="Financial">Revenue</asp:HyperLink>
+                                            <asp:HyperLink CssClass="dropdown-item" ID="HyperLink26" runat="server" NavigateUrl="/_content_pages/financial-status-update-New" ToolTip="Financial">Expenses</asp:HyperLink>
+                                             </ul>
+                                    </li>
+                             <%--       
+                                      <asp:HyperLink CssClass="dropdown-item" ID="HyperLink7" runat="server" NavigateUrl="/_content_pages/finance_mobilisation_advance" ToolTip="Financial">Mobilization Advance</asp:HyperLink>--%>
                                     <%--<asp:HyperLink CssClass="dropdown-item" ID="SuezPhysicalProgressUpdate" runat="server" NavigateUrl="/_content_pages/suez-physical-progress" ToolTip="suez-physical-progress" Visible="true">Suez Physical Progress</asp:HyperLink>--%>
                                     <asp:HyperLink CssClass="dropdown-item" ID="AddProjectStatusofWorkProgress" runat="server" NavigateUrl="/_content_pages/consolidated-monthly-activities" ToolTip="Project Status of Work Progress">Project Status of Work Progress</asp:HyperLink>
                                     <asp:HyperLink CssClass="dropdown-item" ID="AddViewSitePhotographs" runat="server" NavigateUrl="~/_content_pages/choose-sitephotographs" ToolTip="Site Photographs">Site Photographs</asp:HyperLink>
                                     <asp:HyperLink CssClass="dropdown-item" ID="AddViewConsolidatedActivities" runat="server" NavigateUrl="/_content_pages/consolidated-activities" ToolTip="Consolidated Activities">Consolidated Activities</asp:HyperLink>
                                     <asp:HyperLink CssClass="dropdown-item" ID="HyperLink10" runat="server" NavigateUrl="/_content_pages/engineering-status-update" ToolTip="Engineering">Engineering TreeView</asp:HyperLink>
-                                </div>
+                                </ul>
 
 			                </li>
 
@@ -354,6 +366,20 @@ background: url('../../_assets/images/pageloading.gif') 50% 50% no-repeat;
                                <asp:HyperLink CssClass="dropdown-item" ID="HyperLink20" runat="server" NavigateUrl="/_content_pages/vendor-items-search" ToolTip="vendor-items-search">Vendor Items Search </asp:HyperLink>
                                     <%--<asp:HyperLink CssClass="dropdown-item" ID="HyperLink31" runat="server" NavigateUrl="/_content_pages/boq-details" ToolTip="BOQ Details">BOQ Details</asp:HyperLink>--%>
                                 </div>
+
+			                </li>
+
+                             <li class="nav-item dropdown" id="Li3" runat="server">
+                                <a id="navLinkMaterials" href="/_content_pages/documents" title="Materials" class="<%:Page.Request.Url.LocalPath.Contains("/_content_pages/documents") ? "nav-link dropdown-toggle active" : Page.Request.Url.LocalPath.Contains("/_content_pages/document-history") ? "nav-link dropdown-toggle active" : "nav-link dropdown-toggle" %>" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" role="button">
+                                    <i class="nav-link--icon fas fa-file-contract"></i>
+                                    <span class="nav-link--text">Materials</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navLinkMaterials">
+                                     <asp:HyperLink CssClass="dropdown-item" ID="HyperLink28" runat="server" NavigateUrl="/_content_pages/vendors" ToolTip="vendors">Vendors</asp:HyperLink>
+                                    <asp:HyperLink CssClass="dropdown-item" ID="HyperLink29" runat="server" NavigateUrl="/_content_pages/vendor-items" ToolTip="vendor-items">Items</asp:HyperLink>
+                                                 <asp:HyperLink CssClass="dropdown-item" ID="HyperLink30" runat="server" NavigateUrl="/_content_pages/vendor-items-search" ToolTip="vendor-items-search">Vendor Items Search </asp:HyperLink>
+                                              <asp:HyperLink CssClass="dropdown-item" ID="HyperLink31" runat="server" NavigateUrl="/_content_pages/purchase-order" ToolTip="PO" Visible="true">Purchase Order</asp:HyperLink>
+                                    </div>
 
 			                </li>
 

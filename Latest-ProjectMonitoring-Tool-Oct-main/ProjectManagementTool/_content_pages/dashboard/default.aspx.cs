@@ -4123,5 +4123,140 @@ fontSize: 12,
         //    }
         //}
 
+
+        private void Bind_DocumentsChart_ForRealEstate()
+        {
+            if (DDLWorkPackage.SelectedValue != "--Select--")
+            {
+                //DataSet ds = getdt.getDocumentCount_by_ProjectUID_WorkPackageUID2(new Guid(DDlProject.SelectedValue), new Guid(DDLWorkPackage.SelectedValue), Request.QueryString["Option"].ToString());
+                // DataSet ds = getdt.getDocumentCount_by_ProjectUID_WorkPackageUID2(new Guid(DDlProject.SelectedValue), new Guid(DDLWorkPackage.SelectedValue), "Flow 2");
+                DataSet ds = getdt.getDocumentCount_by_ProjectUID_WorkPackageUID2(new Guid(DDlProject.SelectedValue), new Guid(DDLWorkPackage.SelectedValue), "Flow 2");
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    StringBuilder strScript = new StringBuilder();
+                    strScript.Append(@"<script type='text/javascript'>
+                google.charts.load('current', { packages: ['corechart', 'bar'] });
+                google.charts.setOnLoadCallback(drawBasic);
+
+                function drawBasic() {
+                    var data = google.visualization.arrayToDataTable([
+                      ['Document', 'Ontime','Delayed', { role: 'annotation' }],");
+
+                    foreach (DataRow r in ds.Tables[0].Rows)
+                    {
+                        string status_name = r.ItemArray[0].ToString();
+                        int status_count = Convert.ToInt32(r.ItemArray[1].ToString());
+                        int status_delay_count = 0; // Convert.ToInt32(r.ItemArray[2].ToString());
+                        int resubmitcountD = 0;
+                        int resubmitcountC = 0;
+                        int resubmitcountB = 0;
+
+                        if (status_name == "Submitted")
+                        {
+                            status_name = "Under Review";
+
+                            resubmitcountB = getResubmitDocs(new Guid(DDlProject.SelectedValue), new Guid(DDLWorkPackage.SelectedValue), "Flow 2", "Code B");
+
+                            resubmitcountC = getResubmitDocs(new Guid(DDlProject.SelectedValue), new Guid(DDLWorkPackage.SelectedValue), "Flow 2", "Code C");
+
+                            resubmitcountD = getResubmitDocs(new Guid(DDlProject.SelectedValue), new Guid(DDLWorkPackage.SelectedValue), "Flow 2", "Code D");
+
+                            status_count = status_count + resubmitcountD + resubmitcountC + resubmitcountB;
+
+                            HttpContext.Current.Session["docuids_Submitted"] = HttpContext.Current.Session["docuids_Code D"].ToString() + HttpContext.Current.Session["docuids_Code B"].ToString() + HttpContext.Current.Session["docuids_Code C"].ToString();
+                        }
+                        //
+                        if (status_name == "Code D")
+                        {
+                            resubmitcountD = getResubmitDocs(new Guid(DDlProject.SelectedValue), new Guid(DDLWorkPackage.SelectedValue), "Flow 2", "Code D");
+
+                            if (status_count > resubmitcountD)
+                            {
+                                status_count = status_count - resubmitcountD;
+                            }
+                        }
+
+                        if (status_name == "Code C")
+                        {
+                            resubmitcountC = getResubmitDocs(new Guid(DDlProject.SelectedValue), new Guid(DDLWorkPackage.SelectedValue), "Flow 2", "Code C");
+
+                            if (status_count > resubmitcountD)
+                            {
+                                status_count = status_count - resubmitcountC;
+                            }
+                        }
+
+                        if (status_name == "Code B")
+                        {
+                            resubmitcountB = getResubmitDocs(new Guid(DDlProject.SelectedValue), new Guid(DDLWorkPackage.SelectedValue), "Flow 2", "Code B");
+
+                            if (status_count > resubmitcountD)
+                            {
+                                status_count = status_count - resubmitcountB;
+                            }
+                        }
+
+                        if (status_name != "ONTB Review" && status_name != "Code G" && status_name != "Code H" && status_name != "Client Approved")
+                            strScript.Append("['" + status_name + "'," + Math.Abs(status_count - status_delay_count).ToString() + "," + status_delay_count.ToString() + ",'" + status_count.ToString() + "'],");
+                    }
+
+
+                    strScript.Remove(strScript.Length - 1, 1);
+                    strScript.Append("]);");
+                    strScript.Append(@"var options = {
+                        is3D: true,
+                        legend: { position: 'none' },
+                        fontSize: 13,
+                        isStacked: true,
+                        chartArea: {
+                            left: '25%',
+                            top: '5%',
+                            height: '88%',
+                            width: '61%'
+                        },
+                        bars: 'horizontal',
+                        annotations: {
+                        alwaysOutside:true,
+                        },
+                        axes: {
+                            x: {
+                                0: { side: 'top', label: 'Percentage' } // Top x-axis.
+                            }
+                        },
+                        hAxis: {
+                            minValue: 0
+                        }
+                    };
+                    function selectHandler()
+                    {
+                        var selection = chart.getSelection();
+                        if (selection.length > 0)
+                        {
+                            var colLabel = data.getColumnLabel(selection[0].column);
+                            var mydata = data.getValue(selection[0].row,0);
+                            ");
+                    strScript.Append("window.open('/_content_pages/document-drilldown/default.aspx?DocumentType=' + (colLabel + '_' + mydata) + '&selection=2' + '&Flow=Flow 2&ProjectUID=" + DDlProject.SelectedValue + "&WorkPackageUID=" + DDLWorkPackage.SelectedValue + "', '_self', true);");
+                    //alert('The user selected ' + topping);
+                    strScript.Append(@"}
+                    }
+                    
+                    var chart = new google.visualization.BarChart(document.getElementById('DocChart_Div'));
+                    google.visualization.events.addListener(chart, 'select', selectHandler);
+                    chart.draw(data, options);
+                }
+            </script>");
+                    ltScript_Document.Text = strScript.ToString();
+
+                    BtoF.HRef = "/_content_pages/dashboard/default.aspx?option=Flow 2&selection=2&back=1";
+                    BtoF.Visible = false;
+                }
+                else
+                {
+                    ltScript_Document.Text = "<h4>No data</h4>";
+                }
+            }
+        }
+
     }
 }

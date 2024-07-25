@@ -664,5 +664,50 @@ namespace ProjectManager.DAL
             return ds;
         }
 
+        public int insertORUpdateVendorsItems(Guid ItemID, string UniqueItemCode, Guid VendorID, string GenericName, string Description,
+            string Unit, decimal MinQuantity, decimal Rate, DateTime ValidFrom, DateTime ValidUntil, int ItemLevel, string Vendor_specific_Name, Guid Parent_Item_code, Guid ItemCategoryUID, decimal CGST, decimal SGST, decimal GST)
+        {
+            int cnt = 0;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(db.GetConnectionString()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand("usp_insertORUpdateVendorsItems"))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Connection = con;
+                        cmd.CommandTimeout = 120;
+                        cmd.Parameters.AddWithValue("@ItemID", ItemID);
+                        cmd.Parameters.AddWithValue("@UniqueItemCode", UniqueItemCode);
+                        cmd.Parameters.AddWithValue("@VendorID", VendorID);
+                        cmd.Parameters.AddWithValue("@GenericName", GenericName);
+                        cmd.Parameters.AddWithValue("@Description", Description);
+                        cmd.Parameters.AddWithValue("@Unit", Unit);
+                        cmd.Parameters.AddWithValue("@MinQuantity", MinQuantity);
+                        cmd.Parameters.AddWithValue("@Rate", Rate);
+                        cmd.Parameters.AddWithValue("@ValidFrom", ValidFrom);
+                        cmd.Parameters.AddWithValue("@ValidUntil", ValidUntil);
+                        cmd.Parameters.AddWithValue("@ItemLevel", ItemLevel);
+                        cmd.Parameters.AddWithValue("@Vendor_specific_Name", Vendor_specific_Name);
+                        cmd.Parameters.AddWithValue("@Parent_Item_code", Parent_Item_code);
+                        cmd.Parameters.AddWithValue("@ItemCategoryUID", ItemCategoryUID);
+                        cmd.Parameters.AddWithValue("@CGST", CGST);
+                        cmd.Parameters.AddWithValue("@SGST", SGST);
+                        cmd.Parameters.AddWithValue("@GST", GST);
+
+                        con.Open();
+                        cnt = cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+                return cnt;
+            }
+            catch (Exception ex)
+            {
+                return cnt;
+            }
+        }
+
     }
 }

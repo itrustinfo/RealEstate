@@ -38,21 +38,21 @@
               
             <div class="auto-form-wrapper">
                 <div style="width:100%">
-                <div style="text-align:left;float:left;width:30%;padding-top:15px" id="VEPL" runat="server">
-                    <img src="_assets/images/viswaraj _logo.jpg" height="50" width="150" alt="VEPL" /><br />
-                    <span style="vertical-align:middle; color:#0521AC; font-size:large;">M/s Vishvaraj Environment Pvt Ltd</span>
-                </div>
-                <div style="text-align:center;float:left;width:40%;padding-left:20px" runat="server">
+                <%--<div style="text-align:left;float:left;width:30%;padding-top:15px;display:none" id="VEPL" runat="server">
+                    <img src="_assets/images/viswaraj _logo.jpg" height="50" width="150" alt="VEPL" style="display:none"/><br />
+                    <span style="vertical-align:middle; color:#0521AC; font-size:large;"></span>
+                </div>--%>
+                <div style="text-align:center;float:left;width:100%;padding-left:20px" runat="server">
                     <asp:Image ID="sLogo" runat="server" />
                     <span class="font-weight-bold" style="vertical-align:middle; color:#0521AC; font-size:xx-large;"><asp:Label ID="LblTitle" runat="server"></asp:Label></span>
                     <h5 style="text-align:center; margin-top:10px;"><asp:Label ID="LblDescription" runat="server"></asp:Label></h5>
                 
                 </div>
-                    <div style="text-align:left;float:left;width:10%;margin-top:-20px">&nbsp;</div>
-                 <div style="text-align:center;float:left;width:20%;vertical-align:top" id="Div1" runat="server">
+                   <%-- <div style="text-align:left;float:left;width:10%;margin-top:-20px">&nbsp;</div>
+                 <div style="text-align:center;float:left;width:20%;vertical-align:top" id="Div1" runat="server" visible="false">
                     <img src="_assets/images/Picture5.png" height="120" width="130" alt="BWSSB" />
                    <span style="vertical-align:middle; color:#0521AC; font-size:large;">BWSSB</span>
-                </div>
+                </div>--%>
                 <div style="float:none;clear:both;width:100%">&nbsp;</div>
                 </div>
                 

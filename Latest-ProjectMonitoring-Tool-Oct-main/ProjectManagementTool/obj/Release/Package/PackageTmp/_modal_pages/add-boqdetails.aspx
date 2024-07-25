@@ -73,6 +73,21 @@
                         <label class="lblCss" for="txtprice">GST</label> &nbsp;<span style="color:red; font-size:1.1rem;"></span>
                         <input type="text" id="txtGST" runat="server" class="form-control" autocomplete="off"/>
                     </div>
+                    <div class="form-group">
+                        <label class="lblCss" for="DDLInspectionType">Inspection Type</label> &nbsp;<span style="color:red; font-size:1.1rem;">*</span>
+                         <asp:DropDownList ID="DDLInspectionType" runat="server" CssClass="form-control" AutoPostBack="true">
+                             <asp:ListItem Value="00">--Select--</asp:ListItem>
+                             <asp:ListItem Value="Supply">Supply</asp:ListItem>
+                             <asp:ListItem Value="Epoxy">Epoxy</asp:ListItem>
+                             <asp:ListItem Value="Guniting">Guniting</asp:ListItem>
+                             <asp:ListItem Value="Laying & Jointing">Laying & Jointing</asp:ListItem>
+                             <asp:ListItem Value="Hydro Testing">Hydro Testing</asp:ListItem>
+                             <asp:ListItem Value="EarthWork / Excavation">EarthWork / Excavation</asp:ListItem>
+                             <asp:ListItem Value="Barricading">Barricading</asp:ListItem>
+                             <asp:ListItem Value="DeWatering the Sewage">DeWatering the Sewage</asp:ListItem>
+                             <asp:ListItem Value="Shoring and Strutting">Shoring and Strutting</asp:ListItem>
+                         </asp:DropDownList>
+                    </div>
                    
                     </div>
                  <div class="col-sm-12">

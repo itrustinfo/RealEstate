@@ -107,7 +107,7 @@
     <%--<div id="loader"></div>--%>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 col-lg-4 form-group">Financial Status Update</div>
+                <div class="col-md-12 col-lg-4 form-group">Financial Status Update Revenue</div>
                 <div class="col-md-6 col-lg-4 form-group">
                     <label class="sr-only" for="DDLProject">Project</label>
                     <div class="input-group">
