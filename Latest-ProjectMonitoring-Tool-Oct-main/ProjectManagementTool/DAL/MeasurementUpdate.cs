@@ -709,5 +709,71 @@ namespace ProjectManager.DAL
             }
         }
 
+        //added on 29/07/2024
+        public int InsertintoPOItemsRecieved(Guid PO_Items_Recieved_UID, Guid VendorUID, Guid PO_OrderID, string Chalan_Number, string Waybill_Number,
+           DateTime Item_RecievedDate, Guid CreatedByUID, string GRNNo)
+        {
+            int cnt = 0;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(db.GetConnectionString()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand("usp_InsertintoPOItemsRecieved"))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Connection = con;
+                        cmd.CommandTimeout = 120;
+                        cmd.Parameters.AddWithValue("@PO_Items_Recieved_UID", PO_Items_Recieved_UID);
+                        cmd.Parameters.AddWithValue("@VendorUID", VendorUID);
+                        cmd.Parameters.AddWithValue("@PO_OrderID", PO_OrderID);
+                        cmd.Parameters.AddWithValue("@Chalan_Number", Chalan_Number);
+                        cmd.Parameters.AddWithValue("@Waybill_Number", Waybill_Number);
+                        cmd.Parameters.AddWithValue("@ValidUntil", Item_RecievedDate);
+                        cmd.Parameters.AddWithValue("@CreatedByUID", @CreatedByUID);
+                        cmd.Parameters.AddWithValue("@GRNNo", GRNNo);
+                       
+                        con.Open();
+                        cnt = cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+                return cnt;
+            }
+            catch (Exception ex)
+            {
+                return cnt;
+            }
+        }
+
+        public int InsertintoPOItemsRecievedQuantities(Guid UID, Guid PO_Items_Recieved_UID, Guid ItemUID, decimal Quantity)
+        {
+            int cnt = 0;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(db.GetConnectionString()))
+                {
+
+                    using (SqlCommand cmd = new SqlCommand("usp_InsertintoPOItemsRecievedQuantities"))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Connection = con;
+                        cmd.CommandTimeout = 120;
+                        cmd.Parameters.AddWithValue("@UID ", UID);
+                        cmd.Parameters.AddWithValue("@PO_Items_Recieved_UID", PO_Items_Recieved_UID);
+                        cmd.Parameters.AddWithValue("@ItemUID", ItemUID);
+                        cmd.Parameters.AddWithValue("@Quantity", Quantity);
+                        con.Open();
+                        cnt = cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+                return cnt;
+            }
+            catch (Exception ex)
+            {
+                return cnt;
+            }
+        }
     }
 }

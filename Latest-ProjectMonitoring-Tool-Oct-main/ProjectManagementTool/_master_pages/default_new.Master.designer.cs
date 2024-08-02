@@ -148,15 +148,6 @@ namespace ProjectManager._master_pages {
         protected global::System.Web.UI.WebControls.HyperLink EngineeringFast;
         
         /// <summary>
-        /// HyperLink18 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink18;
-        
-        /// <summary>
         /// ProjectTracking control.
         /// </summary>
         /// <remarks>
@@ -776,6 +767,15 @@ namespace ProjectManager._master_pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink31;
+        
+        /// <summary>
+        /// HyperLink18 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink18;
         
         /// <summary>
         /// MiscMenu control.

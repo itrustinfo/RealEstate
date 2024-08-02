@@ -369,6 +369,7 @@ background: url('../../_assets/images/pageloading.gif') 50% 50% no-repeat;
                                     <asp:HyperLink CssClass="dropdown-item" ID="HyperLink15" runat="server" NavigateUrl="/_content_pages/vendor-items" ToolTip="vendor-items">Items</asp:HyperLink>
                                                  <asp:HyperLink CssClass="dropdown-item" ID="HyperLink20" runat="server" NavigateUrl="/_content_pages/vendor-items-search" ToolTip="vendor-items-search">Vendor Items Search </asp:HyperLink>
                                               <asp:HyperLink CssClass="dropdown-item" ID="HyperLink18" runat="server" NavigateUrl="/_content_pages/purchase-order" ToolTip="PO" Visible="true">Purchase Order</asp:HyperLink>
+                                    <asp:HyperLink CssClass="dropdown-item" ID="HyperLink28" runat="server" NavigateUrl="/_content_pages/goods-receipt-notes-with-po" ToolTip="PO" Visible="true">Goods Recieved Notes(GRN)</asp:HyperLink>
                                     </div>
 
 			                </li>
